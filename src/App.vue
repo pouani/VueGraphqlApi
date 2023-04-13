@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Home />
+    <GraphVue />
   </div>
 </template>
 
 <script setup>
-import Home from './components/Home.vue';
+import GraphVue from './components/GraphVue.vue';
 </script>
 
 <style scoped>
