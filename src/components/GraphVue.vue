@@ -1,10 +1,16 @@
 <template>
     <div>
-        <div>
+        <div class="flex gap-2 w-1/3" v-if="store.data.length">
             <VueMultiselect
                 v-model="selected"
-                :options="options">
+                :options="store.data"
+                placeholder="Select one"
+                track-by="denomination"
+                label="denomination"
+                @search-change="searchMedicament"
+            >
             </VueMultiselect>
+            {{ selected }}
             <select v-model="select" 
                 class="relative z-10 block p-2 mb-8 text-gray-700 border border-gray-500 
                 rounded-md focus:border-blue-500 focus:ring-opacity-40 focus:ring-blue-300 focus:ring focus:outline-none"
@@ -38,6 +44,10 @@ const options = reactive([
 ]);
 
 // computed(() => store.limit = select.value )
+
+const searchMedicament = (query) => {
+    store.filterMedicamentByDenomination(query)
+}
 
 onMounted(() => {
     store.setData();
